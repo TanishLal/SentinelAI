@@ -78,7 +78,7 @@ Inspired by the SlowFast Networks and MobileNet-SSD, our architecture splits the
 - **Fusion & Classification:**  
   Lateral connections merge features from both channels, and subsequent CNN layers combined with LSTM modules capture temporal dynamics. Fully connected layers generate final class probabilities for targeted notifications.
 
-![SentinelAI Architecture FlowChart](https://github.com/TanishLal/SentinelAI/blob/main/SentinelAI%20Architectural%20FlowChart.png?raw=true)
+![SentinelAI Architecture FlowChart](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/SentinelAI%20Architectural%20FlowChart.png)
 
 ---
 
@@ -92,8 +92,8 @@ Inspired by the SlowFast Networks and MobileNet-SSD, our architecture splits the
 - **Performance:**  
   Achieved an F1-score of ~87% on our curated dataset, significantly outperforming baseline models.
 
-![Convolution Neural Network (CNN)](https://github.com/TanishLal/SentinelAI/blob/main/Convolution%20Neural%20Network%20(CNN).png)
-![Long Short Term Memory (LSTM) ](https://github.com/TanishLal/SentinelAI/blob/main/Long%20Short%20Term%20Memory%20(LSTM).png)
+![Convolution Neural Network (CNN)](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Convolution%20Neural%20Network%20(CNN).png)
+![Long Short Term Memory (LSTM) ](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)
 
 ---
 
