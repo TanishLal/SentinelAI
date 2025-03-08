@@ -29,11 +29,13 @@ SentinelAI is an open-source deep learning project designed to revolutionize pub
 ## Project Highlights ✨
 - **Multi-Event Detection:**  
   Combines advanced computer vision with deep learning (using both CNN and LSTM) to capture spatial and temporal features for detecting a wide range of incidents.
+  
 - **Real-Time Monitoring & Alerts:**  
   Designed for deployment on edge devices with extremely low inference time. The system provides immediate notifications to the appropriate emergency services:
   - **Fire/Smoke:** Alerts the nearest fire department.
   - **Road Accidents:** Notifies ambulance services.
   - **Violence & Crime (assault, robbery, fighting, shooting):** Triggers alerts to local police.
+    
 - **Efficient and Lightweight:**  
   Utilizes a novel two-stream (SlowFast) architecture with a dual-path design that minimizes parameters while maintaining high accuracy and speed.
 
