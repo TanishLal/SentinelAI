@@ -4,14 +4,6 @@ SentinelAI is an open-source deep learning project designed to revolutionize pub
 
 ---
 
-#### Project Creators 👨‍💼👩‍💼
-- **Tanish Lal. O**  
-  [LinkedIn](https://www.linkedin.com/in/tanish-lal/)
-- **Shamrutha Sadanandam**  
-  [LinkedIn](https://www.linkedin.com/in/shamruthas/)
-
----
-
 ## Table of Contents 📅
 - [Project Highlights](#project-highlights)
 - [Introduction](#introduction)
