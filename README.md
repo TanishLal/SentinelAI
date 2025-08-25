@@ -122,7 +122,7 @@ Download weights and place them in each module’s `weights/` folder:
 ## 👥 Team Members
 
 * **Tanish Lal O**
-* **Sijo Devassy VJ**
+* **Sijo Devassy V J**
 * **Ruffino Rio Fernando J**
 * **Dhanush G**
 * **Singaravel G**
