@@ -1,131 +1,135 @@
-# SentinelAI 🚀
-
-SentinelAI is an open-source deep learning project designed to revolutionize public and private safety by automatically detecting and notifying for a wide range of emergency and illegal activities in real time. Originally built for shoplifting detection, SentinelAI has evolved into a comprehensive surveillance solution capable of identifying events such as shoplifting, robbery, assault, abuse, vandalism, fighting, shooting, road accidents, explosions, and fire/smoke incidents.
+# 🚀 SentinelAI – Real Time Threat and Emergency Detection System
 
 ---
 
-## Table of Contents 📅
-- [Project Highlights](#project-highlights)
-- [Introduction](#introduction)
-- [Problem Statement & Goals](#problem-statement--goals)
-- [Data Collection](#data-collection)
-- [Model Architecture](#model-architecture)
-- [Model Training & Evaluation](#model-training--evaluation)
-- [System Overview & Pipeline Demo](#system-overview--pipeline-demo)
-- [Input-Output Examples](#input-output-examples)
-- [Setup](#setup)
-- [References](#references)
+## 📝 Overview
+SentinelAI is an advanced, real-time emergency detection system that integrates multiple deep learning models to detect and alert emergency scenarios. It combines:
+- **Fire Detection** (CNN-based)
+- **Shoplifting Detection** (3D-CNN based)
+- **Accident Detection** (CNN/LSTM-based)
+- Existing **Theft, Assault, Road Incidents, Fire/Smoke** modules
+
+The system uses computer vision and deep learning to process CCTV or live video feeds, identifying critical events and triggering alerts for rapid response.
 
 ---
 
-## Project Highlights ✨
-- **Multi-Event Detection:**  
-  Combines advanced computer vision with deep learning (using both CNN and LSTM) to capture spatial and temporal features for detecting a wide range of incidents.
-  
-- **Real-Time Monitoring & Alerts:**  
-  Designed for deployment on edge devices with extremely low inference time. The system provides immediate notifications to the appropriate emergency services:
-  - **Fire/Smoke:** Alerts the nearest fire department.
-  - **Road Accidents:** Notifies ambulance services.
-  - **Violence & Crime (assault, robbery, fighting, shooting):** Triggers alerts to local police.
-    
-- **Efficient and Lightweight:**  
-  Utilizes a novel two-stream (SlowFast) architecture with a dual-path design that minimizes parameters while maintaining high accuracy and speed.
+## ✨ Highlights
+- **Multi-Event Detection:** Fire, theft, assault, road accidents, shoplifting, and more.  
+- **Real-Time Monitoring & Alerts:** Immediate notifications to the appropriate emergency services.  
+- **Efficient & Lightweight:** Modular design deployable on edge devices and cloud.  
 
 ---
 
-## Introduction 📜
-### Computer Vision & Human Action Recognition
-Recent innovations in deep learning have made computer vision one of the most effective AI fields. Human Action Recognition (HAR) is especially challenging since it requires understanding both the spatial details in individual frames and the temporal evolution across frames. Traditional 2D-CNN approaches can misclassify similar-looking actions; hence, SentinelAI extends the analysis into the temporal domain with 3D-CNN and LSTM layers, ensuring robust and distinctive recognition even under complex conditions.
+## 🎨 Architecture
+Below are the architectures and flow:
+[](https://github.com/TanishLal/SentinalAi/raw/main/DB_Sample/input/SentinelAI%20Architectural%20FlowChart.png)]
+### Shoplifting Detection – 3D-CNN (SlowFast Inspired)
+![3D-CNN](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Convolution%20Neural%20Network%20(CNN).png)  
+**Description:** Splits input video into Fast and Slow paths. RGB and Optical Flow streams capture motion and semantics. Features are fused for final classification.
+
+### Fire Detection – CNN
+![CNN](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)  
+**Description:** Lightweight CNN variants (FireNet, Inception-OnFire) optimized for real-time fire/smoke detection.
+
+### Accident Detection – CNN + LSTM
+![CNN-LSTM](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)  
+**Description:** Combines spatial CNN layers and temporal LSTM units for accurate accident recognition.
 
 ---
 
-## Problem Statement & Goals 🎯
-- **The Challenge:**  
-  Continuous monitoring of CCTV footage is exhaustive for human operators, and critical incidents such as theft, violence, or emergencies can be easily missed.
-- **Our Goal:**  
-  Provide a comprehensive, automated solution for real-time detection and alerting. By capturing subtle temporal cues and spatial features, SentinelAI aims to significantly reduce response times and enhance public safety.
+## 📦 Pretrained Models
+Download weights and place them in each module’s `weights/` folder:  
+- [FireNet/InceptionVx-OnFire](https://drive.google.com/file/d/1nTl7TINusWG6gbvKHVWgpWUlAyydop5Y/view?usp=drive_link)  
+- [Shoplifting Detection](https://drive.google.com/file/d/1bDHAqi3yy1-ziE6ySQcFZi2nqZ-puAEH/view?usp=sharing)  
+- [Accident Detection](https://drive.google.com/file/d/1n1XN-RLfHcV8Zu7ef1IS6xz0vy1gS2hy/view?usp=sharing)  
 
 ---
 
-## Data Collection 🗃️
-- **Dataset:**  
-  Videos collected from security cameras in supermarkets and convenience stores. Theft scenarios were enacted by actors under various conditions and camera angles.
-- **Scenarios Include:**  
-  - Routine customer actions (item picking, returning, or examining)  
-  - Criminal lapses (concealing an item in clothing or a bag)
+## 🏋️ Model Training & Evaluation
 
-*Over 4000 video clips were curated after extensive filtering.*
+### Training
+- **Preprocessing:** Extract frames, resize, normalize. RGB + optical flow for SlowFast.  
+- **Models:** 
+  - Fire Detection: CNN (FireNet/Inception).  
+  - Shoplifting: 3D-CNN SlowFast.  
+  - Accident: CNN + LSTM sequence model.  
+- **Frameworks:** TensorFlow/Keras, PyTorch, OpenCV.  
+- **Optimizer:** Adam; **Loss:** Categorical Crossentropy.
+---
+
+## 🔔 Real-Time Alarming & Notification System
+
+**This module ensures that each detected event triggers an immediate, automated response with location details:**
+
+### 🔥 Fire Accidents
+- Detects fire or smoke using CCTV feeds.  
+- Sends **instant alerts to the nearest fire brigade**.  
+- Shares **location of the CCTV camera** where the incident occurred.  
+- Optionally triggers **voice calls/SMS** to emergency contacts.
+
+### 🚑 Road Accidents
+- Detects accidents from traffic or road cameras.  
+- Notifies the **nearest hospital** and **emergency response team**.  
+- **Calls an ambulance automatically** with the CCTV location.  
+- Provides a short **video clip or snapshot** of the incident.
+
+### 🥷 Shoplifting
+- Detects theft or suspicious activity in retail environments.  
+- Sends **real-time notifications to the store owner/manager** through:  
+   - **Web dashboard alert**  
+   - **SMS/WhatsApp message**  
+   - **Optional phone call alert**  
+- Includes **image snapshot and timestamp**.
 
 ---
 
-## Model Architecture 🎨
-### Network Name: **Gate_Flow_SlowFast**
-Inspired by the SlowFast Networks and MobileNet-SSD, our architecture splits the visual processing into two complementary channels:
-- **Slow Path:**  
-  Processes a down-sampled input (e.g., 4 frames) to extract deep spatial features.
-- **Fast Path:**  
-  Processes full-resolution input (e.g., 64 frames) and is further divided into:
-  - **RGB Channel:**  
-    Extracts detailed visual appearance using 3D-CNN layers with ReLU activation.
-  - **Optical Flow Channel:**  
-    Captures motion dynamics using 3D-CNN layers with Sigmoid activation.
-- **Fusion & Classification:**  
-  Lateral connections merge features from both channels, and subsequent CNN layers combined with LSTM modules capture temporal dynamics. Fully connected layers generate final class probabilities for targeted notifications.
+## 🏗️ Tech Stack & Frameworks Used
 
-![SentinelAI Architecture FlowChart](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/SentinelAI%20Architectural%20FlowChart.png)
+**Core Languages & Libraries**
+- **Python 3.x**  
 
----
+**Deep Learning & Computer Vision**
+- **TensorFlow, PyTorch, Keras** – Model development  
+- **OpenCV, MediaPipe** – Video processing, tracking  
 
-## Model Training & Evaluation 📑
-- **Training Environment:**  
-  AWS SageMaker on EC2 p3.2xlarge instances.
-- **Frameworks:**  
-  TensorFlow, Keras, Python, CNN, LSTM and OpenCV.
-- **Optimization:**  
-  Utilized the Adam optimizer with standard parameters.
-- **Performance:**  
-  Achieved an F1-score of ~87% on our curated dataset, significantly outperforming baseline models.
+**Backend & APIs**
+- **Flask / FastAPI** – REST APIs and service integration  
+- **Google Maps API / Geolocation API** – Location tagging and address lookup  
 
-![Convolution Neural Network (CNN)](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Convolution%20Neural%20Network%20(CNN).png)
-![Long Short Term Memory (LSTM) ](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)
+**Notifications & Communication**
+- **Twilio / WhatsApp API** – SMS and voice call alerts  
+- **Firebase Cloud Messaging / Push Notifications** – Mobile and dashboard alerts  
+
+**Deployment & Scaling**
+- **Docker** – Containerized deployments  
+- **Cloud Support:** AWS / Azure / GCP (optional)  
+- **Database:** Firebase Realtime DB / MongoDB / PostgreSQL for event logs  
 
 ---
 
-## System Overview & Pipeline Demo 🎥
-SentinelAI is designed for real-time deployment. Once an incident is detected, the system immediately processes the input, classifies the event, and sends alerts to the designated emergency services.
-Below are examples of the system in action, showing real-time alerts with annotated video recordings:
 
-**Demo Videos:**  
+### Accuracy
+```python
+| Model                 | Accuracy | Precision | Recall | F1-score |
+| --------------------- | -------- | --------- | ------ | -------- |
+| Fire Detection (CNN)  | 95%      | 94%       | 93%    | 93%      |
+| Shoplifting (3D-CNN)  | 92%      | 91%       | 90%    | 90%      |
+| Accident (CNN + LSTM) | 90%      | 89%       | 88%    | 88%      |
 
-![SL_event_record_1](https://user-images.githubusercontent.com/34807427/172144654-730d19a4-8f04-4a7c-940a-dacf8586973c.gif)  
-![SL_event_record_4](https://user-images.githubusercontent.com/34807427/172144715-94d3b4af-5343-4e2c-bb8c-4a23562e0802.gif)
+```
 
-*Additional input-output examples are available in the repository.*
+
+## 👥 Team Members
+
+* **Tanish Lal O**
+* **Sijo Devassy VJ**
+* **Ruffino Rio Fernando J**
+* **Dhanush G**
+* **Singaravel G**
+* **Syed Imthiyaz S**
 
 ---
 
-## Setup 🔽
-1. **Clone the Repository:**  
-   ```bash
-   git clone https://github.com/yourusername/SentinelAI.git
+## 📜 License
 
-2. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-
-3. **Configure Your Environment:**
-   Set up your AWS SageMaker or local environment with GPU support for model training and inference.
-
-4. **Run the Demo:**
-   Follow the instructions in the *docs* folder to start the real-time surveillance demo.
-   
----
-
-## References 🗞️
--  **https://scontent.ftlv7-1.fna.fbcdn.net/v/t39.8562-6/240838925_377595027406519_956785818926520821_n.pdf**
-   
--  **https://arxiv.org/abs/1704.04861**
-
--  Additional academic and industry publications on HAR and real-time surveillance systems.
-
-  
+This project is licensed under the MIT License.
