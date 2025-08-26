@@ -32,7 +32,7 @@ Below are the architectures and flow:
 **Description:** Lightweight CNN variants (FireNet, Inception-OnFire) optimized for real-time fire/smoke detection.
 
 ### Accident Detection – CNN + LSTM
-![CNN-LSTM](https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)  
+![CNN-LSTM]([https://github.com/TanishLal/SentinalAi/blob/main/DB_Sample/input/Long%20Short%20Term%20Memory%20(LSTM).png)
 **Description:** Combines spatial CNN layers and temporal LSTM units for accurate accident recognition.
 
 ---
