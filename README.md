@@ -97,7 +97,7 @@ Download weights and place them in each module’s `weights/` folder:
 - **Google Maps API / Geolocation API** – Location tagging and address lookup  
 
 **Notifications & Communication**
-- **Twilio / WhatsApp API** – SMS and voice call alerts  
+- **SMTP / WhatsApp API** – SMS and voice call alerts  
 - **Firebase Cloud Messaging / Push Notifications** – Mobile and dashboard alerts  
 
 **Deployment & Scaling**
